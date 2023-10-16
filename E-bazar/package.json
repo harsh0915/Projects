@@ -1,0 +1,24 @@
+{
+  "name": "E-bazar",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.22.6",
+    "bower": "^1.8.14",
+    "jquery": "^3.6.0",
+    "meteor-node-stubs": "^1.2.1",
+    "simpl-schema": "^3.4.1"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/client.js",
+      "server": "server/server.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}
