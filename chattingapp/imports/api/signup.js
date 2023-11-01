@@ -12,6 +12,7 @@ Template.signup.events({
         let password = e.target.password.value;
         let confirmpassword = e.target.confirmpassword.value;
 
+        //register user in the database
         const result = await new Promise((resolve, reject) => Meteor.call('duplicacyCheck', email, (err, res) => {
             if (err)
                 reject(err);
