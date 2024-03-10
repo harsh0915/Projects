@@ -49,10 +49,10 @@ button {
 
 .landing-page {
     display: grid;
-    height: 90vh;
+    height: 100vh;
     grid-template-columns: 3fr 1fr;
     background-size: cover;
-    background-image: url('./assets/gym-img.jpg');
+    background-image: url('./../assets/gym-img.jpg');
 }
 
 .hidden {
