@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainPage">
 
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/material_dynamic_secondary10"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/padding_large"
@@ -19,7 +22,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="top bar" />
+            android:text="top bar"
+            android:textSize="@dimen/text_size_heading" />
 
     </LinearLayout>
 

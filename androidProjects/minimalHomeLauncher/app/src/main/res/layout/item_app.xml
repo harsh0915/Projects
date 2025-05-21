@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/margin_large"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingVertical="@dimen/padding_small">
@@ -21,11 +20,5 @@
         android:text="App Name"
         android:textColor="@color/whiteColor"
         android:textSize="@dimen/text_size_large" />
-
-    <View
-        android:id="@+id/lineBottom"
-        android:layout_width="150dp"
-        android:layout_height="2dp"
-        android:background="@color/whiteColor" />
 
 </LinearLayout>
