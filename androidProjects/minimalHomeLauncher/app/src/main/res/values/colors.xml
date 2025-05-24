@@ -2,10 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="whiteColor">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
 
     <color name="backgroundColor">#476FAD</color>
     <color name="backgroundColorVariant">#274685</color>
-    <color name="secondaryBackgroundColor">#717171</color>
+    <color name="secondaryBackgroundColor">#BF1D335F</color>
     <color name="primaryTextColor">#FFFFFF</color>
     <color name="primaryTextColorVariant">#717171</color>
 

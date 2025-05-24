@@ -20,6 +20,6 @@
         android:padding="@dimen/padding_large"
         android:text="App Name"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_size_large" />
+        android:textSize="@dimen/text_size_xlarge" />
 
 </LinearLayout>

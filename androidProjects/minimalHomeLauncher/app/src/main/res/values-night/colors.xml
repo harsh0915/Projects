@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="whiteColor">#FFFFFFFF</color>
-
-    <color name="backgroundColor">#1F212F</color>
+    <color name="backgroundColor">#283D5F</color>
     <color name="backgroundColorVariant">#476FAD</color>
-    <color name="secondaryBackgroundColor">#717171</color>
+    <color name="secondaryBackgroundColor">#BF385889</color>
     <color name="primaryTextColor">#FFFFFF</color>
     <color name="primaryTextColorVariant">#717171</color>
 </resources>
