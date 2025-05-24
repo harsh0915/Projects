@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_large"
         android:text="App Name"
-        android:textColor="@color/whiteColor"
+        android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/text_size_large" />
 
 </LinearLayout>
