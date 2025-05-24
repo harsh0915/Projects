@@ -21,13 +21,14 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     private int visibleAppCount;
 
     public interface onAppClickListener {
-        void appClicked();
+        void appClicked(int position);
     }
 
-    public AppsAdapter(Context context, List<String> appsList, int visibleAppCount) {
+    public AppsAdapter(Context context, List<String> appsList, int visibleAppCount, onAppClickListener listener) {
         this.context = context;
         this.appsList = appsList;
         this.visibleAppCount = visibleAppCount;
+        this.listener = listener;
     }
 
     @NonNull
@@ -40,10 +41,15 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AppsAdapter.ViewHolder holder, int position) {
 
+        if (position > 0)
+            holder.lineTop.setVisibility(View.VISIBLE);
+        else
+            holder.lineTop.setVisibility(View.GONE);
+
         holder.appName.setText(appsList.get(position));
 
         holder.appName.setOnClickListener(v -> {
-            listener.appClicked();
+            listener.appClicked(position);
         });
     }
 
@@ -55,11 +61,13 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView appName;
+        private final View lineTop;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             appName = itemView.findViewById(R.id.appName);
+            lineTop = itemView.findViewById(R.id.lineTop);
         }
     }
 }

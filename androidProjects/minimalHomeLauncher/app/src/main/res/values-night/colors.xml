@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="whiteColor">#FFFFFFFF</color>
+
+    <color name="backgroundColor">#1F212F</color>
+    <color name="backgroundColorSecondary">#476FAD</color>
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="primaryTextColorVariant">#717171</color>
+</resources>

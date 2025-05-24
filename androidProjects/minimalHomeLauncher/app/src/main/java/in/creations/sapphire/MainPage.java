@@ -53,7 +53,7 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
         appsList = packageManager.queryIntentActivities(launcherIntent, 0);
 
         //set up adapter for recycler view
-        appsAdapter = new AppsAdapter(this, getAppLabels(appsList), getVisibleAppCount());
+        appsAdapter = new AppsAdapter(this, getAppLabels(appsList), getVisibleAppCount(), this);
         appsRCV.setLayoutManager(new LinearLayoutManager(this));
         appsRCV.setAdapter(appsAdapter);
     }
@@ -85,7 +85,12 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
     }
 
     @Override
-    public void appClicked() {
-
+    public void appClicked(int position) {
+        ResolveInfo resolveInfo = appsList.get(position);
+        String packageName = resolveInfo.activityInfo.packageName;
+        Intent launchApp = packageManager.getLaunchIntentForPackage(packageName);
+        if (launchApp != null) {
+            startActivity(launchApp);
+        }
     }
 }
