@@ -7,20 +7,22 @@
     android:background="@color/secondaryBackgroundColor"
     android:orientation="vertical">
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_small"
-        android:padding="@dimen/padding_medium"
-        android:text="Settings"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_size_heading"
-        android:textStyle="bold" />
+        android:background="@color/backgroundColorVariant"
+        android:fitsSystemWindows="true">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/whiteColor" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
+            android:text="Settings"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/text_size_heading"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
