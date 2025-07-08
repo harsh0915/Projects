@@ -67,9 +67,6 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
         homePage = findViewById(R.id.homePage);
         content = findViewById(R.id.content);
 
-        //animator
-//        setAnimator();
-
         //registering the launcher intent
         Intent launcherIntent = new Intent(Intent.ACTION_MAIN, null);
         launcherIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -83,7 +80,6 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
 
         blurEffect = RenderEffect.createBlurEffect(5f, 5f, Shader.TileMode.CLAMP);
 
-//        homePage.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         homePage.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -109,16 +105,16 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
                                 || (newState == DrawerLayout.STATE_IDLE && homePage.isDrawerOpen(container))
                                 || (newState == DrawerLayout.STATE_SETTLING)
                 ) {
-//                    bounce.start();
                     menuButton.setImageResource(R.drawable.menu_icon);
                     content.setRenderEffect(blurEffect);
                 } else {
-//                    bounce.start();
                     menuButton.setImageResource(R.drawable.outlined_menu_icon);
                     content.setRenderEffect(null);
                 }
             }
+
         });
+
     }
 
     private void setupClickListeners() {
@@ -132,42 +128,6 @@ public class MainPage extends AppCompatActivity implements AppsAdapter.onAppClic
 
         });
     }
-
-//    public void setAnimator() {
-//        bounce = ObjectAnimator.ofFloat(menuButton, "translationY", 0, 20);
-//        bounce.setDuration(200);
-//        bounce.setRepeatMode(ObjectAnimator.REVERSE);
-//        bounce.setRepeatCount(1);
-//        bounce.setInterpolator(new AccelerateInterpolator());
-//
-//        bounce.addListener(new Animator.AnimatorListener() {
-//            @Override
-//            public void onAnimationStart(@NonNull Animator animation) {
-//                if (homePage.isDrawerOpen(GravityCompat.END))
-//                    menuButton.setImageResource(R.drawable.menu_icon);
-//                else
-//                    menuButton.setImageResource(R.drawable.outlined_menu_icon);
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(@NonNull Animator animation) {
-//                if (homePage.isDrawerOpen(GravityCompat.END))
-//                    menuButton.setImageResource(R.drawable.menu_icon);
-//                else
-//                    menuButton.setImageResource(R.drawable.outlined_menu_icon);
-//            }
-//
-//            @Override
-//            public void onAnimationCancel(@NonNull Animator animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(@NonNull Animator animation) {
-//
-//            }
-//        });
-//    }
 
     private List<String> getAppLabels(List<ResolveInfo> appsList) {
         List<String> labels = new ArrayList<>();
