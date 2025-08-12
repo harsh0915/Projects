@@ -5,42 +5,27 @@
     android:id="@+id/homePage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".MainPage">
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/moon_night_samurai"
+        android:fitsSystemWindows="true">
 
-        <FrameLayout
+        <TextView
             android:id="@+id/topBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/backgroundColorVariant"
-            android:fitsSystemWindows="true"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="@dimen/padding_medium"
-                android:text="@string/app_name"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/text_size_heading"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/menuButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center"
-                android:importantForAccessibility="no"
-                android:padding="@dimen/padding_large"
-                android:src="@drawable/outlined_menu_icon" />
-
-        </FrameLayout>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/padding_large"
+            android:text="@string/app_name"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/appsRCV"

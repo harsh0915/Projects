@@ -1,12 +1,12 @@
-#include "cstdio"  //major input out functions
-#include "cstdlib" //dynamic memory management
-#include "cstring"
-#include "unistd.h"	   //read and write functions for client-server communication
-#include "sys/types.h" // defines size_t, pthread_attr_t and many other keywords
-#include "sys/socket.h"
+#include "cstdio"		 //major input out functions
+#include "cstdlib"		 //dynamic memory management
+#include "cstring"		 //string helpers and class
+#include "unistd.h"		 //read and write functions for client-server communication
+#include "sys/types.h"	 // defines size_t, pthread_attr_t and many other keywords
+#include "sys/socket.h"	 //system calls related to sockets and some structures
 #include "netinet/tcp.h" //The <netinet/tcp.h> header shall define the following macro for use as a socket option at the IPPROTO_TCP level:
 #include "arpa/inet.h"	 //inhouses the sockaddr_in and vairous structures
-#include "iostream"		 //mostly cin and cout
+#include "iostream"		 //conatins cin, cout and endl
 #include "pthread.h"	 //posix thread
 #define MAX 100
 
@@ -89,8 +89,6 @@ int main()
 	if (fd < 0)
 		report("socket intialisation error", 1);
 
-	// binding the server's local address in memory
-
 	struct sockaddr_in saddr;
 
 	memset(&saddr, 0, sizeof(saddr));
@@ -98,6 +96,7 @@ int main()
 	saddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	saddr.sin_port = htons(8070);
 
+	// binding the server's local address in memory
 	if (bind(fd, (sockaddr *)&saddr, sizeof(saddr)) < 0)
 		report("binding error", 1);
 

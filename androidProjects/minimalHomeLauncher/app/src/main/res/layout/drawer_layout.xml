@@ -4,25 +4,19 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryBackgroundColor"
+    android:background="@color/translucent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundColorVariant"
-        android:fitsSystemWindows="true">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_medium"
-            android:text="Settings"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_heading"
-            android:textStyle="bold" />
-
-    </FrameLayout>
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:padding="@dimen/padding_large"
+        android:text="Settings"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +34,7 @@
             android:padding="@dimen/padding_large"
             android:text="App List"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_xlarge"
+            android:textSize="@dimen/text_size_large"
             app:drawableStartCompat="@drawable/change_app_list_icon" />
 
         <TextView
@@ -54,7 +48,7 @@
             android:padding="@dimen/padding_large"
             android:text="Focused"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_xlarge" />
+            android:textSize="@dimen/text_size_large" />
 
         <TextView
             android:id="@+id/changeThemes"
@@ -66,7 +60,7 @@
             android:padding="@dimen/padding_large"
             android:text="Themes"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_xlarge"
+            android:textSize="@dimen/text_size_large"
             app:drawableStartCompat="@drawable/themes_icon" />
 
         <TextView
@@ -80,7 +74,7 @@
             android:padding="@dimen/padding_large"
             android:text="Lock"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_xlarge" />
+            android:textSize="@dimen/text_size_large" />
 
         <TextView
             android:id="@+id/openWebsite"
@@ -93,7 +87,7 @@
             android:padding="@dimen/padding_large"
             android:text="Feedback"
             android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/text_size_xlarge" />
+            android:textSize="@dimen/text_size_large" />
 
         <TextView
             android:id="@+id/quit"
@@ -106,7 +100,7 @@
             android:padding="@dimen/padding_large"
             android:text="Quit"
             android:textColor="@color/red"
-            android:textSize="@dimen/text_size_xlarge" />
+            android:textSize="@dimen/text_size_large" />
 
     </LinearLayout>
 
