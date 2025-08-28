@@ -7,13 +7,9 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 
 import java.util.List;
 
@@ -46,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         packageManager = getPackageManager();
         appsList = AppsList.getAllInstalledApps(packageManager);
         appsAdapter = new AppsAdapter(this, appsList, getVisibleAppCount());
-        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
-        layoutManager.setFlexDirection(FlexDirection.ROW);
-        layoutManager.setFlexWrap(FlexWrap.WRAP);
-        layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
         appsRCV.setLayoutManager(layoutManager);
         appsRCV.setAdapter(appsAdapter);
     }

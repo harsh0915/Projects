@@ -36,7 +36,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     @NonNull
     @Override
     public AppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_small_square_tile, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false);
         return new ViewHolder(view);
     }
 
@@ -45,7 +45,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
         ResolveInfo resolveInfo = appsList.get(position);
         boolean isSystemApp = (resolveInfo.activityInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
 //        if (isSystemApp) {
-            holder.appName.setText(resolveInfo.loadLabel(packageManager));
+//            holder.appName.setText(resolveInfo.loadLabel(packageManager));
             holder.appIcon.setImageDrawable(resolveInfo.loadIcon(packageManager));
             holder.itemView.setOnClickListener(v -> {
                 String packageName = resolveInfo.activityInfo.packageName;
@@ -67,13 +67,13 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView appName;
+//        private final TextView appName;
         private final ImageView appIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             appIcon = itemView.findViewById(R.id.appIcon);
-            appName = itemView.findViewById(R.id.appName);
+//            appName = itemView.findViewById(R.id.appName);
         }
     }
 }

@@ -2,15 +2,16 @@
 <resources>
 
     <!--global padding-->
-    <dimen name="padding_large">15dp</dimen>
-    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_very_small">2dp</dimen>
     <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_large">15dp</dimen>
 
     <!--global margin-->
-    <dimen name="margin_large">15dp</dimen>
-    <dimen name="margin_medium">10dp</dimen>
-    <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_very_small">2dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">15dp</dimen>
 
 
     <!--global text size-->
