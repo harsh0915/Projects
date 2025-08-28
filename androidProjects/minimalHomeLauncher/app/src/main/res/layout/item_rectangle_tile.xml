@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_very_small"
     android:background="@drawable/rounded_box"
-    android:backgroundTint="@color/backgroundColorVariant"
+    android:backgroundTint="@color/tile_bg"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/padding_small"
@@ -14,9 +13,8 @@
 
     <ImageView
         android:id="@+id/appIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:importantForAccessibility="no"
         android:src="@drawable/outlined_menu_icon" />
 
@@ -24,7 +22,6 @@
         android:id="@+id/appName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/margin_very_small"
         android:ellipsize="end"
         android:gravity="end"
         android:maxLines="1"

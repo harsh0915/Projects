@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import in.creations.sapphire.DataModels.Tile;
+import in.creations.sapphire.DataModels.TileType;
 import in.creations.sapphire.adapters.AppsAdapter;
 import in.creations.sapphire.utils.AppsList;
 
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView appsRCV;
     private AppsAdapter appsAdapter;
-    private List<ResolveInfo> appsList;
+    private List<Tile> appsList;
     private PackageManager packageManager;
 
     @Override
@@ -41,27 +43,20 @@ public class MainActivity extends AppCompatActivity {
 //        launcherIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         packageManager = getPackageManager();
         appsList = AppsList.getAllInstalledApps(packageManager);
-        appsAdapter = new AppsAdapter(this, appsList, getVisibleAppCount());
+        appsAdapter = new AppsAdapter(this, appsList);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                Tile tile = appsList.get(position);
+                return tile.getTileDimension(tile.getType());
+            }
+        });
+
         appsRCV.setLayoutManager(layoutManager);
         appsRCV.setAdapter(appsAdapter);
     }
 
     private void setupClickListeners() {
-    }
-
-    private int getVisibleAppCount() {
-
-        int visibleItemCount = 0;
-
-        LinearLayoutManager appsLayoutManager = (LinearLayoutManager) appsRCV.getLayoutManager();
-
-        if (appsLayoutManager != null) {
-            int firstVisibleItemPosition = appsLayoutManager.findFirstVisibleItemPosition();
-            int lastVisibleItemPosition = appsLayoutManager.findLastVisibleItemPosition();
-            visibleItemCount = firstVisibleItemPosition - lastVisibleItemPosition + 1;
-        }
-
-        return visibleItemCount;
     }
 }

@@ -17,47 +17,78 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import in.creations.sapphire.DataModels.Tile;
+import in.creations.sapphire.DataModels.TileType;
 import in.creations.sapphire.R;
 
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
-    private Context context;
-    private List<ResolveInfo> appsList;
-    private PackageManager packageManager;
-    private int visibleAppCount;
+    private final Context context;
+    private final List<Tile> appsList;
+    private final PackageManager packageManager;
 
-    public AppsAdapter(Context context, List<ResolveInfo> appsList, int visibleAppCount) {
+    public AppsAdapter(Context context, List<Tile> appsList) {
         this.context = context;
         this.appsList = appsList;
-        this.visibleAppCount = visibleAppCount;
         this.packageManager = context.getPackageManager();
     }
 
     @NonNull
     @Override
     public AppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false);
-        return new ViewHolder(view);
+        TileType tileType = TileType.enumFromValue(viewType);
+        if (tileType != null) {
+            switch (tileType) {
+                case WIDE_TILE:
+                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rectangle_tile, parent, false));
+
+                case SMALL_TILE:
+                case NORMAL_TILE:
+                default:
+                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false));
+            }
+        } else {
+            return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false));
+
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return appsList.get(position).getType();
     }
 
     @Override
     public void onBindViewHolder(@NonNull AppsAdapter.ViewHolder holder, int position) {
-        ResolveInfo resolveInfo = appsList.get(position);
+        Tile tile = appsList.get(position);
+        ResolveInfo resolveInfo = tile.getResolve_info();
         boolean isSystemApp = (resolveInfo.activityInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-//        if (isSystemApp) {
-//            holder.appName.setText(resolveInfo.loadLabel(packageManager));
-            holder.appIcon.setImageDrawable(resolveInfo.loadIcon(packageManager));
-            holder.itemView.setOnClickListener(v -> {
-                String packageName = resolveInfo.activityInfo.packageName;
-                Intent launchApp = packageManager.getLaunchIntentForPackage(packageName);
-                if (launchApp != null) {
-                    launchApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(launchApp);
-                } else {
-                    Toast.makeText(context, "Cannot launch this app", Toast.LENGTH_SHORT).show();
-                }
+
+        if (getItemViewType(position) == TileType.WIDE_TILE.getValue()) {
+            holder.appName.setText(resolveInfo.loadLabel(packageManager));
+        }
+
+        if (getItemViewType(position) == TileType.SMALL_TILE.getValue()) {
+            holder.itemView.post(() -> {
+                int originalHeight = holder.itemView.getHeight();
+                ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+                layoutParams.height = originalHeight / 2;
+                holder.itemView.setLayoutParams(layoutParams);
             });
-//        }
+        }
+
+        holder.appIcon.setImageDrawable(resolveInfo.loadIcon(packageManager));
+
+        holder.itemView.setOnClickListener(v -> {
+            String packageName = resolveInfo.activityInfo.packageName;
+            Intent launchApp = packageManager.getLaunchIntentForPackage(packageName);
+            if (launchApp != null) {
+                launchApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(launchApp);
+            } else {
+                Toast.makeText(context, "Cannot launch this app", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -67,13 +98,13 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-//        private final TextView appName;
+        private final TextView appName;
         private final ImageView appIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             appIcon = itemView.findViewById(R.id.appIcon);
-//            appName = itemView.findViewById(R.id.appName);
+            appName = itemView.findViewById(R.id.appName);
         }
     }
 }
