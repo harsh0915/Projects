@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,11 @@ import in.creations.sapphire.R;
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
     private Context context;
-    private List<ApplicationInfo> appsList;
+    private List<ResolveInfo> appsList;
     private PackageManager packageManager;
     private int visibleAppCount;
 
-    public AppsAdapter(Context context, List<ApplicationInfo> appsList, int visibleAppCount) {
+    public AppsAdapter(Context context, List<ResolveInfo> appsList, int visibleAppCount) {
         this.context = context;
         this.appsList = appsList;
         this.visibleAppCount = visibleAppCount;
@@ -41,14 +42,13 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AppsAdapter.ViewHolder holder, int position) {
-        ApplicationInfo appInfo = appsList.get(position);
-        boolean isSystemApp = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        if (isSystemApp) {
-
-            holder.appName.setText(appInfo.loadLabel(packageManager));
-            holder.appIcon.setImageDrawable(appInfo.loadIcon(packageManager));
+        ResolveInfo resolveInfo = appsList.get(position);
+        boolean isSystemApp = (resolveInfo.activityInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+//        if (isSystemApp) {
+            holder.appName.setText(resolveInfo.loadLabel(packageManager));
+            holder.appIcon.setImageDrawable(resolveInfo.loadIcon(packageManager));
             holder.itemView.setOnClickListener(v -> {
-                String packageName = appInfo.packageName;
+                String packageName = resolveInfo.activityInfo.packageName;
                 Intent launchApp = packageManager.getLaunchIntentForPackage(packageName);
                 if (launchApp != null) {
                     launchApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -57,7 +57,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
                     Toast.makeText(context, "Cannot launch this app", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
+//        }
     }
 
     @Override

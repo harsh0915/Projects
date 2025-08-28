@@ -13,6 +13,7 @@
         android:stateNotNeeded="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicHomeLauncher">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -25,6 +26,7 @@
 
             </intent-filter>
         </activity>
+    
     </application>
 
 </manifest>

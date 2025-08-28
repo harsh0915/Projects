@@ -8,7 +8,7 @@
 
     <color name="backgroundColor">#476FAD</color>
     <color name="backgroundColorVariant">#274685</color>
-    <color name="secondaryBackgroundColor">#BF1D335F</color>
+    <color name="secondaryColor">#BF1D335F</color>
     <color name="primaryTextColor">#FFFFFF</color>
     <color name="primaryTextColorVariant">#717171</color>
 
