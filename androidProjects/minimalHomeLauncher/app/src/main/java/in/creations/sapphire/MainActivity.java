@@ -17,6 +17,7 @@ import in.creations.sapphire.DataModels.Tile;
 import in.creations.sapphire.DataModels.TileType;
 import in.creations.sapphire.adapters.AppsAdapter;
 import in.creations.sapphire.utils.AppsList;
+import in.creations.sapphire.utils.CustomLayoutManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
         packageManager = getPackageManager();
         appsList = AppsList.getAllInstalledApps(packageManager);
         appsAdapter = new AppsAdapter(this, appsList);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                Tile tile = appsList.get(position);
-                return tile.getTileDimension(tile.getType());
-            }
-        });
+        CustomLayoutManager layoutManager = new CustomLayoutManager(this);
+//        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//            @Override
+//            public int getSpanSize(int position) {
+//                Tile tile = appsList.get(position);
+//                return tile.getTileDimension(tile.getType());
+//            }
+//        });
 
         appsRCV.setLayoutManager(layoutManager);
         appsRCV.setAdapter(appsAdapter);

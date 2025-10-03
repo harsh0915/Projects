@@ -40,15 +40,17 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
         if (tileType != null) {
             switch (tileType) {
                 case WIDE_TILE:
-                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rectangle_tile, parent, false));
+                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rectangle_tile, parent, false), TileType.WIDE_TILE);
 
                 case SMALL_TILE:
+                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false), TileType.SMALL_TILE);
+
                 case NORMAL_TILE:
                 default:
-                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false));
+                    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false), TileType.NORMAL_TILE);
             }
         } else {
-            return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false));
+            return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_square_tile, parent, false), TileType.NORMAL_TILE);
 
         }
     }
@@ -101,7 +103,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
         private final TextView appName;
         private final ImageView appIcon;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, TileType type) {
             super(itemView);
             appIcon = itemView.findViewById(R.id.appIcon);
             appName = itemView.findViewById(R.id.appName);
